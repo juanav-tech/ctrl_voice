@@ -18,7 +18,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# Estilos CSS personalizados para mejorar la estética visual sin alterar la comunicación
+# Estilos CSS personalizados (incluye la corrección para eliminar bordes blancos en componentes de Bokeh)
 st.markdown("""
     <style>
     .stApp {
@@ -41,6 +41,22 @@ st.markdown("""
         border: 1px solid #334155;
         margin-bottom: 15px;
         text-align: center;
+    }
+    /* Estilo para integrar el botón de Bokeh sin fondos blancos */
+    .bk-root {
+        display: flex;
+        justify-content: center;
+    }
+    .bk-btn {
+        background-color: #38BDF8 !important;
+        color: #0F172A !important;
+        border: none !important;
+        border-radius: 8px !important;
+        font-weight: bold !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2) !important;
+    }
+    .bk-btn:hover {
+        background-color: #0EA5E9 !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -82,7 +98,7 @@ st.markdown('<div class="card">', unsafe_allow_html=True)
 st.subheader("🎙️ Asistente de Acceso")
 st.write("Di un comando como **'cerrar puerta'** para enviar la orden al simulador.")
 
-# Botón modificado (Cambio de etiqueta e incremento de ancho)
+# Botón de Bokeh
 stt_button = Button(label="🎙️ Hablar para Cerrar Puerta", width=280)
 
 stt_button.js_on_event("button_click", CustomJS(code="""
