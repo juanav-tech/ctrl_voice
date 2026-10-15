@@ -82,7 +82,8 @@ st.markdown('<div class="card">', unsafe_allow_html=True)
 st.subheader("🎙️ Asistente de Acceso")
 st.write("Di un comando como **'cerrar puerta'** para enviar la orden al simulador.")
 
-stt_button = Button(label="🎙️ Iniciar Reconocimiento", width=250, button_type="success")
+# Botón modificado (Cambio de etiqueta e incremento de ancho)
+stt_button = Button(label="🎙️ Hablar para Cerrar Puerta", width=280)
 
 stt_button.js_on_event("button_click", CustomJS(code="""
     var recognition = new webkitSpeechRecognition();
